@@ -1,0 +1,80 @@
+﻿@model IEnumerable<PolaHotel.Models.Room_Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Test.cshtml";
+    List<PolaHotel.Models.RoomReservation> rooms = ViewBag.Reserve;
+
+
+}
+
+
+
+
+
+
+
+<table class="table table-hover">
+    <thead class="bg-dark" style="color:white">
+        <tr>
+
+            <th>
+                Room Type
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Price
+            </th>
+
+
+
+
+
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.View)
+            </td>
+
+
+            <td>
+                <img src="~/Content/Images/@item.Image" style="width:150px;height:90px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+
+
+
+        </tr>
+    }
+
+</table>
+
+
+
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/Content/Images/image.jpg" alt="img1" style="width:100%;height:250px" />
+        </div>
+        <div class="col-sm-4">
+            <img src="~/Content/Images/image2.jpg" alt="img1" style="width:100%;height:250px" />
+        </div>
+        <div class="col-sm-4">
+            <img src="~/Content/Images/image4.jpg" alt="img1" style="width:100%;height:250px" />
+        </div>
+    </div>
+</div>
+
+
+
+

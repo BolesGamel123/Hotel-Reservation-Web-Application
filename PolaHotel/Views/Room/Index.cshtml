@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PolaHotel.Models.Room_Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<PolaHotel.Models.RoomReservation> rooms = ViewBag.Reserve;
+
+
+}
+
+
+<h4>All Rooms</h4>
+<hr />
+
+
+
+
+<table class="table table-hover">
+    <thead class="bg-dark" style="color:white">
+        <tr>
+
+            <th>
+                Room Type
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Number of Rooms
+            </th>
+
+            <th>
+                Available Room
+            </th>
+
+
+
+        </tr>
+    </thead>
+
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.View)
+    </td>
+
+
+    <td>
+        <img src="~/Content/Images/@item.Image" style="width:150px;height:90px;" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @{
+            int x = item.Rooms.Count();
+
+        }
+        <p>@x</p>
+    </td>
+    <td>
+        @{
+            var result = item.Rooms.Where(r => !rooms.Any(r2 => r2.RoomID == r.ID)).Count();
+        }
+        <p>@result</p>
+
+    </td>
+
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Numbed)
+        </td>*@
+
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { roomNo = item.ID }, new { @class = "btn btn-info", @style = "width:70px" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-primary", @style = "width:70px" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", @style = "width:70px" })
+        </td>*@
+</tr>
+    }
+
+</table>
+
+
+
+
+@*<div class="d-flex" style="word-wrap:break-word;background:red;width:100%" >
+    @foreach (var item in Model)
+    {
+    <div class="card" style="width:50%;margin:auto auto">
+        <img class="card-img-top" src="~/Content/Images/@item.Image" alt="Card image" style="height:200px;">
+        <div class="card-body">
+            <h4 class="card-title text-center">Room (@item.Room_Number)</h4>
+            <hr />
+            <span>Type :</span> <i> @item.Room_Category.Category_Name</i>
+
+            <p class="card-text"><span>Description :</span> @item.Description</p>
+            <p><span>Price :</span> @item.Price Pound</p>
+            <p><span>Beds :</span> @item.NumberOfBeeds</p>
+            <div>
+                <span> Services :</span>
+                @foreach (var t in item.RoomServices)
+                {
+                    <input type="checkbox" checked disabled />
+                    @Html.DisplayFor(modelItem => t.Services.Name)
+                }
+            </div>
+            <span>Avialability :</span> @Html.DisplayFor(model => item.isavailble)
+            <br />
+            <a href="/Room/Index" class="btn btn-primary" style="margin-left:40%">Go Back</a>
+        </div>
+    </div>
+    }
+    </div>
+*@
+
+
+

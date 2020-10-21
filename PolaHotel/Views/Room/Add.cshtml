@@ -1,0 +1,162 @@
+﻿@model PolaHotel.Models.Room
+
+@{
+    ViewBag.Title = "AddStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    SelectList RoomCategory = new SelectList(ViewBag.RoomCategorys, "catID", "View");
+}
+
+<style>
+    body {
+        background: #808080
+    }
+    .form {
+      
+        background: white;
+        margin: auto auto;
+        padding: 20px;
+        border-radius: 10px;
+        width:100%
+    }
+    .control-label {
+        font-weight: bold;
+        color: #808080;
+    }
+</style>
+
+<div class="container">
+    @using (Html.BeginForm("Add", "Room", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Room</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("Number Of Room", htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.NumberofRoom, new { htmlAttributes = new { @class = "form-control", @style = "background: #f1f3f4;", @placeholder = "Enter Number Of Beds" } })
+                        @Html.ValidationMessageFor(model => model.NumberofRoom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-12">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "background: #f1f3f4;", @placeholder = "Enter Room Description" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.Label("Price", "Price", htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @style = "background: #f1f3f4;", @placeholder = "Enter Room Price" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("Check If The Room Is Available Or Not ", htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.isavailble, new { htmlAttributes = new { @checked = "checked" } })
+                        <span>Is Available</span>
+                        @Html.ValidationMessageFor(model => model.isavailble, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @*<div class="form-group">
+                        @Html.Label("Number Of Beeds", htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-12">
+                            @Html.EnumDropDownListFor(model => model.Numbed, new { htmlAttributes = new { @class = "form-control", @style = "background: #f1f3f4;", @placeholder = "Enter Number Of Beds" } })
+                            @Html.ValidationMessageFor(model => model.Numbed, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Choose Room Category", htmlAttributes: new { @class = "control-label " })
+                        <div class="col-md-12">
+                            @Html.DropDownList("catID", RoomCategory , htmlAttributes: new { @class = "form-control", @style = "background: #f1f3f4;" })
+                            @Html.ValidationMessageFor(model => model.catID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-12">
+                <input type="file" name="upload" class="form-control" style="border:hidden;background: #f1f3f4;" />
+
+            </div>
+        </div>*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="upload" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <br><br />
+                        <div class="row" style="float:right">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-success"})
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        }
+
+
+    </div>
+
+<br />
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $(".form-control").click(function () {
+                $(".form-control").css("background","white");
+            });
+            $(".form-control").mouseleave(function () {
+                $(".form-control").css("background", "#f1f3f4");
+            });
+        })
+    </script>
+    
+}

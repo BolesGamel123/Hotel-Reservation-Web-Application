@@ -1,0 +1,152 @@
+﻿@model PolaHotel.Models.Reservation
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Reservision</h2>
+<style>
+    body {
+        background: #808080;
+    }
+
+    .form {
+        background: white !important;
+        margin: auto auto !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+    }
+
+    .control-label {
+        font-weight: bold;
+        color: #808080;
+    }
+</style>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-dark">@TempData["Message"]</div>
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form">
+            <h4>Reservation</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ReservID)
+            @Html.HiddenFor(model => model.CustomerID)
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-6">ChickIn Date</label>
+                        <div class="col-md-12">
+                            @*<input class="form-control" type="datetime" name="ChickIn" value="@Model.ChickIn" />*@
+                            @Html.TextBoxFor(model => model.ChickIn, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(model => model.ChickIn, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.choutOut, htmlAttributes: new { @class = "control-label colInvalidOperationException-md-6" })
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.choutOut, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(model => model.choutOut, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Adult, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Adult, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Adult, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Childern, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Childern, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Childern, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Room Category</label>
+                        <div class="row">
+
+                            <select name="catID">
+                                @foreach (var item in ViewBag.Room_Categories)
+                                {
+                                    <option value="@item.catID">@item.View</option>
+                                }
+                            </select>
+
+                            <div class="select-itms">
+                                <select name="NumberofRooms">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <br><br />
+
+                    <div class="row" style="float:right">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-success" })
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+<br />
+<br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

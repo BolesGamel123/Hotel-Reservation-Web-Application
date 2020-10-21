@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/gijgo.css" rel="stylesheet" />
+    <link href="~/Content/slicknav.css" rel="stylesheet" />
+
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome-all.min.css" rel="stylesheet" />
+
+    <link href="~/Content/themify-icons.css" rel="stylesheet" />
+    <link href="~/Content/slick.css" rel="stylesheet" />
+    <link href="~/Content/nice-select.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/responsive.css" rel="stylesheet" />
+
+
+
+
+
+
+   
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <header>
+                    <!-- Header Start -->
+                    <div class="header-area header-sticky">
+                        <div class="main-header " style="margin:0px;">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <!-- logo -->
+
+                                    <div class="col-xl-2 col-lg-2">
+                                        <div class="logo">
+                                            <a href="index.html"><h1>New Pola</h1></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-8 col-lg-8">
+                                        <!-- main-menu -->
+                                        <div class="main-menu f-right d-none d-lg-block">
+                                            <nav>
+                                                <ul id="navigation">
+                                                    <li><a href="/Home/Index">Home</a></li>
+                                                    <li><a href="/Home/About">About</a></li>
+                                                    <li><a href="/contact/ContactMessage">Contact Us</a></li>
+                                                    <li><a href="/Room/IndexCustomer">Rooms</a></li>
+                                                    <li>
+
+                                                        <a href="/Customer/New" class="btn  text-white " style="font-weight:bold">Book Online</a>
+
+                                                    </li>
+
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-xl-2 col-lg-2">*@
+                                    <!-- header-btn -->
+                                    @*<div class="header-btn">
+                                        <a href="#" class="btn btn1 d-none d-lg-block ">Book Online</a>
+                                    </div>*@
+                                    @*</div>*@
+                                    <!-- Mobile Menu -->
+                                    <div class="col-12">
+                                        <div class="mobile_menu d-block d-lg-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Header End -->
+                </header>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12" style="margin:0px;padding:0px">
+                @RenderBody()
+              
+                </div>
+            </div>
+
+
+
+                <div class="row">
+                    <div class="col-lg-12" style="margin:0px;padding:0px">
+                        <footer>
+                            <!-- Footer Start-->
+                            <div class="footer-area black-bg footer-padding">
+                                <div class="container">
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                                            <div class="single-footer-caption mb-30">
+                                                <!-- logo -->
+                                                <div class="footer-logo">
+                                                    <h1> <a href="index.html" style="color: white;"> New Pola</a></h1>
+                                                </div>
+                                                <div class="footer-social footer-social2">
+                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                                    <a href="#"><i class="fab fa-behance"></i></a>
+                                                </div>
+                                                <div class="footer-pera">
+                                                    <p>
+                                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                                        Copyright &copy;
+                                                        <script>document.write(new Date().getFullYear());</script> All rights reserved
+                                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
+                                            <div class="single-footer-caption mb-30">
+                                                <div class="footer-tittle">
+                                                    <h4>Quick Links</h4>
+                                                    <ul>
+                                                        <li><a href="#">About New Pola</a></li>
+                                                        <li><a href="#">Our Best Rooms</a></li>
+                                                        <li><a href="#">Our Photo Gellary</a></li>
+                                                        <li><a href="#">Pool Service</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
+                                            <div class="single-footer-caption mb-30">
+                                                <div class="footer-tittle">
+                                                    <h4>Reservations</h4>
+                                                    <ul>
+                                                        <li><a href="#">Tel: 095 2365 051</a></li>
+                                                        <li><a href="#">Skype: NewPolabooking</a></li>
+                                                        <li><a href="#">reservations@hotelriver.com</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-3 col-md-4  col-sm-5">
+                                            <div class="single-footer-caption mb-30">
+                                                <div class="footer-tittle">
+                                                    <h4>Our Location</h4>
+                                                    <ul>
+                                                        <li><a href="#">Awamiya Island, Luxor</a></li>
+
+                                                    </ul>
+                                                    <!-- Form -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Footer End-->
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+
+            <script src="~/Scripts/jquery.slicknav.min.js"></script>
+
+            <script src="~/Scripts/owl.carousel.min.js"></script>
+            <script src="~/Scripts/slick.min.js"></script>
+
+            <script src="~/Scripts/gijgo.min.js"></script>
+
+            <script src="~/Scripts/wow.min.js"></script>
+            <script src="~/Scripts/animated.headline.js"></script>
+            <script src="~/Scripts/jquery.magnific-popup.js"></script>
+
+
+            <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+            <script src="~/Scripts/jquery.nice-select.min.js"></script>
+            <script src="~/Scripts/jquery.sticky.js"></script>
+
+            <script src="~/Scripts/contact.js"></script>
+            <script src="~/Scripts/jquery.form.js"></script>
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/mail-script.js"></script>
+            <script src="~/Scripts/jquery.ajaxchimp.min.js"></script>
+
+
+
+            <script src="~/Scripts/plugins.js"></script>
+            <script src="~/Scripts/main.js"></script>
+            @RenderSection("scripts", required: false)
+
+
+
+
+
+</body>
+</html>

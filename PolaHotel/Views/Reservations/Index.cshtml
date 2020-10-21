@@ -1,0 +1,107 @@
+﻿@model IEnumerable<PolaHotel.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<h4>All Reservations</h4>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<!--------Search-->
+<form action="/Reservations/Search" method="get">
+    <input type="text" name="Name" value="@ViewBag.name" />
+    <input type="submit" value="Search" class="btn btn-outline-primary" />
+</form>
+
+
+
+
+
+<table class="table table-hover">
+    <thead class="bg-dark" style="color:white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChickIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.choutOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReserveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChickIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.choutOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveDate)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Period) Day
+            </td>
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReservID }, new { @class = "btn btn-info", @style = "width:70px" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReservID }, new { @class = "btn btn-primary", @style = "width:70px" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReservID }, new { @class = "btn btn-danger", @style = "width:70px" })
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Reservations/SearchPost",
+                        type: "POST",
+                        dataType: "json",
+                        data: { Name: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Name, value: item.Name };
+                            }))
+
+                        }
+                    })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+
+
+
+}

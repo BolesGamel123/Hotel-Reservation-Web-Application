@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PolaHotel.Models.Services>
+
+
+       
+
+    <div class="container table-bordered">
+       
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+            <div class="col-6">
+
+                @Html.DisplayFor(medelitem => item.Name)<span>
+                    &nbsp;
+                </span>
+                @if (item.isExtracharge == true)
+                {
+                    <span style="background-color:#dca73a;color:white">Extra Charge</span>
+
+
+                }
+                else
+                {
+
+                    <span>  </span>
+
+                }
+
+            </div>
+
+
+              
+
+       
+            }
+        </div>
+
+
+    </div>
+           
+
+
+         

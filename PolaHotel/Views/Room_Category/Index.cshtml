@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PolaHotel.Models.Room_Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>All Room Categories</h4>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create",null,new { @class="btn btn-primary"})
+</p>
+<table class="table table-hover">
+    <thead class="bg-dark" style="color:white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.View)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.View)
+            </td>
+            <td>
+                <img src="~/Content/Images/@item.Image" style="width:150px;height:90px;" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.catID }, new { @class = "btn btn-info", @style = "width:70px" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.catID }, new { @class = "btn btn-primary", @style = "width:70px;color:white" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.catID }, new { @class = "btn btn-danger", @style = "width:70px" })
+            </td>
+        </tr>
+    }
+
+</table>

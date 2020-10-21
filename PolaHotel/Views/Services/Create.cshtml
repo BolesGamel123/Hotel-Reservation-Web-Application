@@ -1,0 +1,84 @@
+﻿@model PolaHotel.Models.Services
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    body {
+        background: #808080;
+    }
+
+    .form {
+        background: white !important;
+        margin: auto auto !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+    }
+
+    .control-label {
+        font-weight: bold;
+        color: #808080;
+    }
+</style>
+<div class="container">
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form horizontal">
+            <h4>Services</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Extra Change", htmlAttributes: new { @class = "control-label " })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.isExtracharge, new { htmlAttributes = new { @checked = "checked" } })
+                            <span>Extra charge</span>
+                            @Html.ValidationMessageFor(model => model.isExtracharge, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <br><br />
+                    <div class="row" style="float:right">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-success" })
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Save" class="btn btn-primary" />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

@@ -1,0 +1,33 @@
+﻿@model PolaHotel.Models.Room
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    span{ font-size:16px;font-weight:bold}
+</style>
+
+<h4>Room Details</h4>
+<hr />
+<div class="card" style="width:400px;margin:auto auto;background:#dee1e6" >
+    <img class="card-img-top" src="~/Content/Images/@Model.Image" alt="Card image" style="height:200px;">
+    <div class="card-body">
+        @*<h4 class="card-title text-center">Room (@Model.Room_Number)</h4>*@
+        <br />
+        <hr />
+        <span>Type :</span> <i> @Model.RoomCategory.View</i>
+
+        <p class="card-text"><span>Description :</span><i> @Model.Description</i></p>
+        <p><span>Price :</span> <i>@Model.Price Pound</i></p>
+        @*<p><span>Beds :</span> <i>@Model.NumberOfBeeds</i></p>*@
+
+        <span>Avialability :</span> @Html.DisplayFor(model => model.isavailble)
+        <br />        <br />
+
+        <a href="/Room/Index" class="btn btn-primary" style="margin-left:40%">Go Back</a>
+    </div>
+</div>
+<br/><br/>
+
+

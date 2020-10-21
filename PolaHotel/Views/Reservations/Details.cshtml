@@ -1,0 +1,109 @@
+﻿@model PolaHotel.Models.Reservation
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+
+    <h4>Reservation Deatils</h4>
+    <hr />
+    <div class="container">
+        <div class="card card-outline card-danger" style="width:35%;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    @Html.DisplayFor(model => model.Customer.Name)
+
+                </h3>
+            </div>
+            <div class="card-body">
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.ChickIn) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.ChickIn)
+
+                </span><br />
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.choutOut) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.choutOut)
+
+                </span><br />
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.ReserveDate) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.ReserveDate)
+
+                </span><br />
+
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.Period) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.Period)
+
+                </span><br />
+
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.Adult) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.Adult)
+
+                </span><br />
+
+                <span class="text-danger font-weight-bold">
+
+                    @Html.DisplayNameFor(model => model.Childern) :
+                </span>
+                <span>
+                    @Html.DisplayFor(model => model.Childern)
+
+                </span><br />
+                <span class="text-danger font-weight-bold">
+                    Room Reserved
+                </span><br />
+                @foreach (var item in ViewBag.RoomCategory)
+                {
+                    foreach (var cat in ViewBag.Room)
+                    {
+                        if (cat.catID == item.catID)
+                        {
+                            <span>
+                                @cat.Category_Name,
+                            </span>
+
+                        }
+
+
+                    }
+                    <span>
+                        with
+                        @item.NumberofRooms Room
+                    </span><br />
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <div class="row" style="float:right">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-success" })
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
